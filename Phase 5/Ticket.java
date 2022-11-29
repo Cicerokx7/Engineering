@@ -64,6 +64,25 @@ public class Ticket {
     public void setCheckLists(LinkedList checkLists){
         this.checkLists = checkLists;
     }
+    public void addCheckList(CheckList checkList){
+        checkLists.add(checkList);
+    }
+    public CheckList removeCheckList(String title){
+        for(int i = 0; i < checkLists.size(); i++){
+            if(checkLists.get(i).getTitle().equals(title)){
+                return checkLists.get(i);
+            }
+        }
+        return null;
+    }
+    public void openTicket(){
+        for(int i = 0; i < checkLists.size(); i++){
+            System.err.println(checkLists.get(i).getTitle());
+            if(checkLists.get(i).getDetails() != null){
+                System.err.println(checkLists.get(i).getDetails());
+            }
+        }
+    }
     public String getColor() {
         return color;
     }

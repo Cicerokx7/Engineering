@@ -74,41 +74,45 @@ public class PhaseFourPartTwoTest{
         homePage.addTicket("Red", "Get Burger", "Get a big cheese burger", 2022, 11, 23, 16, 2022, 11, 23, 17);
         homePage.addTicket("Blue", "Eat Burger", "Self Explanitory.", 2022, 11, 23, 17, 2022, 11, 23, 18);
         homePage.addTicket("Purple", "Poop Burger", "Do not do so too quickly or else it will make a mess, and do not do so too slowly or it could be painful.", 2022, 11, 23, 18, 2022, 12, 25, 8);
+        homePage.addCheckList("Poop Burger", "Flush Toilet", "Do this after the buisiness is complete");
+        homePage.addCheckList("Poop Burger", "Wash Hands", "Don't be gross");
+        homePage.removeCheckList("Poop Burger", "Wash Hands");
+        homePage.openTicket("Poop Burger");
 
-        System.out.println("\n23, invalid password should not effect the hold count");
-        test.login("Ronald_macDonald@gmail.com", "test");
+        // System.out.println("\n23, invalid password should not effect the hold count");
+        // test.login("Ronald_macDonald@gmail.com", "test");
 
-        System.out.println("\n24, wrong password should not work");
-        test.login("Ronald_macDonald@gmail.com", "testTwo");
+        // System.out.println("\n24, wrong password should not work");
+        // test.login("Ronald_macDonald@gmail.com", "testTwo");
 
-        System.out.println("\n25, wrong password should not work");
-        test.login("Ronald_macDonald@gmail.com", "testTwo");
+        // System.out.println("\n25, wrong password should not work");
+        // test.login("Ronald_macDonald@gmail.com", "testTwo");
 
-        System.out.println("\n26, wrong password should not work");
-        test.login("Ronald_macDonald@gmail.com", "testFour");
+        // System.out.println("\n26, wrong password should not work");
+        // test.login("Ronald_macDonald@gmail.com", "testFour");
 
-        System.out.println("\n27, wrong password should not work, a hold should be placed on account");
-        test.login("Ronald_macDonald@gmail.com", "testFive");
+        // System.out.println("\n27, wrong password should not work, a hold should be placed on account");
+        // test.login("Ronald_macDonald@gmail.com", "testFive");
 
-        System.out.println("\n28,correct password but since a hold is place on the account it should not sign in.");
-        test.login("Ronald_macDonald@gmail.com", "testThree");
+        // System.out.println("\n28,correct password but since a hold is place on the account it should not sign in.");
+        // test.login("Ronald_macDonald@gmail.com", "testThree");
 
-        double timer = clock.millis()+59900;
-        System.out.println("\n29,wrong password but since a hold is place on the account it should respond with that.");
-        test.login("Ronald_macDonald@gmail.com", "testThree");
-        System.out.println("waiting 59900 milliseconds");
-        while(clock.millis() < timer){
-            //wait
-        }
-        System.out.println("\n30,correct password but since a hold is place on the account it should not sign in.");
-        test.login("Ronald_macDonald@gmail.com", "testThree");
-        timer = clock.millis()+100;
-        System.out.println("waiting 100 milliseconds");
-        while(clock.millis() < timer){
-            //wait
-        }
-        System.out.println("\n31, hold should be over, should sign in.");
-        test.login("Ronald_macDonald@gmail.com", "testThree");
+        // double timer = clock.millis()+59900;
+        // System.out.println("\n29,wrong password but since a hold is place on the account it should respond with that.");
+        // test.login("Ronald_macDonald@gmail.com", "testThree");
+        // System.out.println("waiting 59900 milliseconds");
+        // while(clock.millis() < timer){
+        //     //wait
+        // }
+        // System.out.println("\n30,correct password but since a hold is place on the account it should not sign in.");
+        // test.login("Ronald_macDonald@gmail.com", "testThree");
+        // timer = clock.millis()+100;
+        // System.out.println("waiting 100 milliseconds");
+        // while(clock.millis() < timer){
+        //     //wait
+        // }
+        // System.out.println("\n31, hold should be over, should sign in.");
+        // test.login("Ronald_macDonald@gmail.com", "testThree");
 /*
         System.out.println("\nwait one minute!!!");
         System.out.println("then sign in manually using the terminal!");

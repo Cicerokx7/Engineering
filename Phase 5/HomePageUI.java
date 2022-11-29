@@ -1,15 +1,14 @@
 import java.util.LinkedList;
 
+import javax.swing.CellRendererPane;
+
 public class HomePageUI {
     String email;
     int index;
     String password;
     String color;
-    LinkedList tickets;
+    LinkedList<Ticket> tickets;
     Cloud cloud;
-    public void test(){
-        System.err.println("PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    }
     public void begin(Cloud cloud, String email, String password){
         this.email = email;
         this.password = password;
@@ -42,4 +41,30 @@ public class HomePageUI {
         display();
     }
 
+    public void addCheckList(String ticket, String title, String details){
+        CheckList newCheckList = new CheckList(title, details);
+        for(int i = 0; i < tickets.size(); i++){
+            if(((Ticket) tickets.get(i)).getTitle().equals(tickets)){
+                ((Ticket) tickets.get(i)).addCheckList(newCheckList);
+                return;
+            }
+        }
+    }
+    
+    public CheckList removeCheckList(String ticket, String title){
+        for(int i = 0; i < tickets.size(); i++){
+            if(((Ticket) tickets.get(i)).getTitle().equals(ticket)){
+                return ((Ticket) tickets.get(i)).removeCheckList(title);
+            }
+        }
+        return null;
+    }
+
+    public void openTicket(String ticket){
+        for(int i = 0; i < tickets.size(); i++){
+            if(((Ticket) tickets.get(i)).getTitle().equals(ticket)){
+                tickets.get(i).openTicket();
+            }
+        }
+    }
 }
