@@ -11,14 +11,14 @@ public class LoginManager {
     public Cloud login(String email, String password){
         int i = cloud.find(email);
         if(i > -1){
-            if(cloud.accounts.get(i).get(this.password).equals(password) == true){
-                if(((long) cloud.accounts.get(i).get(holds)) > -3 && ((long) cloud.accounts.get(i).get(holds)) <= 0){
-                    cloud.accounts.get(i).set(holds, (long) 0);
+            if(cloud.accounts.get(i).getPassword().equals(password) == true){
+                if(((long) cloud.accounts.get(i).getHold()) > -3 && ((long) cloud.accounts.get(i).getHold()) <= 0){
+                    cloud.accounts.get(i).setHold((long) 0);;
                     return cloud;
                 }
                 else{
-                    if(((long) cloud.accounts.get(i).get(holds)) < clock.millis()){
-                        cloud.accounts.get(i).set(holds, (long) 0);
+                    if(((long) cloud.accounts.get(i).getHold()) < clock.millis()){
+                        cloud.accounts.get(i).setHold((long) 0);;
                         return cloud;
                     }
                     else{
@@ -28,18 +28,18 @@ public class LoginManager {
                 }
             }
             else{
-                if(((long) cloud.accounts.get(i).get(holds)) > -3 && ((long) cloud.accounts.get(i).get(holds)) <= 0){
-                    cloud.accounts.get(i).set(holds, ((long) cloud.accounts.get(i).get(holds))-1);
+                if(((long) cloud.accounts.get(i).getHold()) > -3 && ((long) cloud.accounts.get(i).getHold()) <= 0){
+                    cloud.accounts.get(i).setHold(((long) cloud.accounts.get(i).getHold())-1);
                     return null;
                 }
-                else if(((long) cloud.accounts.get(i).get(holds)) <= -3){
-                    cloud.accounts.get(i).set(holds, clock.millis()+60000);
+                else if(((long) cloud.accounts.get(i).getHold()) <= -3){
+                    cloud.accounts.get(i).setHold(clock.millis()+60000);
                     System.err.println("Too many wrong attempts: A hold has been placed on your account until a few minutes have passed.");
                     return null;
                 }
                 else{
-                    if(((long) cloud.accounts.get(i).get(holds)) < clock.millis()){
-                        cloud.accounts.get(i).set(holds, (long) -1);
+                    if(((long) cloud.accounts.get(i).getHold()) < clock.millis()){
+                        cloud.accounts.get(i).setHold((long) -1);
                         return null;
                     }
                     else{

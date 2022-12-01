@@ -19,14 +19,14 @@ public class LoginUI{
                 System.out.println("The username is too short please enter a username with at least four characters.");                
             }
         }while(userName.length() < 4);
-        System.out.println("Please enter an email.");
+        System.out.println("Please enter an email address.");
         boolean valid = true;
         //Check if the email is valid, if the email is invalid the program will loop until a valid email is entered.
         do{
             userName = terminalInput.next();
             valid = loginManager.checkEmail(userName);
             if(valid == false){
-                System.out.println("The email entered had an error please enter a real email.");
+                System.out.println("The email address entered had an error please enter a real email address.");
             }
         } while(valid == false);
         //Check if a valid password is submitted if an password the password is invalid the program will loop until a valid password is entered.
@@ -50,13 +50,13 @@ public class LoginUI{
             System.out.println("The username is too short please enter a username with at least four characters.");                
         }
         else{
-            System.out.println("Please enter an email.");
+            System.out.println("Please enter an email address.");
             boolean valid = true;
             //Check if the email is a valid.
             email = emailInput;
             valid = loginManager.checkEmail(email);
             if(valid == false){
-                System.out.println("The email entered had an error please enter a real email.");
+                System.out.println("The email address entered had an error please enter a real email address.");
             }
             else{
                 //Check if a valid password is submitted.
@@ -74,14 +74,14 @@ public class LoginUI{
     }
 
     public void login(){
-        System.out.println("Please enter your email.");
+        System.out.println("Please enter your email address.");
         boolean valid = true;
         //Check if the email is a valid, if the email is invalid the program will loop until a valid email is entered.
         do{
             email = terminalInput.next();
             valid = loginManager.checkEmail(email);
             if(valid == false){
-                System.out.println("The email entered had an error please enter a real email.");
+                System.out.println("The email address entered had an error please enter a real email.");
             }
         } while(valid == false);
         //Check if a valid password is submitted if an password the password is invalid the program will loop until a valid password is entered.
@@ -95,7 +95,7 @@ public class LoginUI{
         Cloud result = loginManager.login(email, password);
         if(result == null){
             //We don't want people to know this information so the response is replaced with the following.
-            System.out.println("Wrong Email and/or Password");
+            System.out.println("Wrong Email Address and/or Password");
         }
         else{
             homePage.begin(result, email, password);
@@ -104,13 +104,13 @@ public class LoginUI{
 
     //This option is available for when the userName and password are provided in the call.
     public void login(String emailInput, String passwordInput){
-        System.out.println("Please enter your email.");
+        System.out.println("Please enter your email address.");
         boolean valid = true;
         //Check if the email is a valid.
         email = emailInput;
         valid = loginManager.checkEmail(email);
         if(valid == false){
-            System.out.println("The email entered had an error please enter a real email.");
+            System.out.println("The email address entered had an error please enter a real email address.");
         }
         else{
             //Check if a valid password is submitted.
@@ -123,7 +123,7 @@ public class LoginUI{
                 Cloud result = loginManager.login(email, password);
                 if(result == null){
                     //We don't want people to know this information so the response is replaced with the following.
-                    System.out.println("Wrong Email and/or Password");
+                    System.out.println("Wrong Email Address and/or Password");
                 }
                 else{
                     homePage.begin(result, email, password);

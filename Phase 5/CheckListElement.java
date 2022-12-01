@@ -1,14 +1,23 @@
-public class CheckList {
+public class CheckListElement {
+    //This is a class that contains the information for an element of a checkList.
     boolean checked;
     String title;
     String details;
-    public CheckList(String title, String details){
+    public CheckListElement(String title, String details){
         checked = false;
         this.title = title;
         this.details = details;
     }
     public void setChecked(boolean checked) {
         this.checked = checked;
+    }
+    public void check(){
+        if(checked){
+            checked = false;
+        }
+        else{
+            checked = true;
+        }
     }
     public void setTitle(String title) {
         this.title = title;
