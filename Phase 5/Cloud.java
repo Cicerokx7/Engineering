@@ -1,30 +1,13 @@
 import java.util.*;
 
 public class Cloud{
-    LinkedList<Account> accounts = new LinkedList<>();
-    // LinkedList<String> userNames = new LinkedList<>();
-    // LinkedList<String> emails = new LinkedList<>();
-    // LinkedList<String> passwords = new LinkedList<>();
-    // LinkedList<Long> holds = new LinkedList<>();
-    // int userName = 0;
-    // int email = 1;
-    // int password = 2;
-    // int holds = 3;
-    // int tickets = 4;
-    // int color = 5;
+    private LinkedList<Account> accounts = new LinkedList<>();
+    
     public boolean createAccount(String userName, String email, String password){
         if(findUserName(userName) == -1 && find(email) == -1){
-            // LinkedList newAccount = new LinkedList<>();
             LinkedList<Ticket> tickets = new LinkedList<>();
             Account newAccount = new Account(userName, email, password, (long) 0, tickets, "dark");
             accounts.add(newAccount);
-            // accounts.get(accounts.size()-1).add(userName);
-            // accounts.get(accounts.size()-1).add(email);
-            // accounts.get(accounts.size()-1).add(password);
-            // accounts.get(accounts.size()-1).add((long) 0);
-            // LinkedList tickets = new LinkedList<>();
-            // accounts.get(accounts.size()-1).add(tickets);
-            // accounts.get(accounts.size()-1).add("dark");
             return true;
         }
         else{
@@ -93,6 +76,26 @@ public class Cloud{
     public void setColor(int index, String password, String color){
         if(accounts.get(index).getPassword().equals(password)){
             accounts.get(index).setColor(color);
+        }
+    }
+
+    public boolean passwordsEqual(int index, String password, int secretPassword){
+        if(secretPassword == 688740309){
+            return accounts.get(index).getPassword().equals(password);
+        }
+        return false;
+    }
+
+    public long getHold(int index, String password){
+        if(password.equals(accounts.get(index).getPassword())){
+            return ((long) accounts.get(index).getHold());
+        }
+        return -1;
+    }
+
+    public void setHold(int index, long hold, String password){
+        if(password.equals(accounts.get(index).getPassword())){
+            accounts.get(index).setHold(hold);
         }
     }
 }

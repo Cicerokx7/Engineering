@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 public class LoginUI{
-    HomePageUI homePage;
-    String userName;
-    String email;
-    String password;
-    Scanner terminalInput = new Scanner(System.in);
-    LoginManager loginManager = new LoginManager();
+    private HomePageUI homePage;
+    private String userName;
+    private String email;
+    private String password;
+    private Scanner terminalInput = new Scanner(System.in);
+    private LoginManager loginManager = new LoginManager();
     public LoginUI(HomePageUI homePage){
         this.homePage = homePage;
     }
@@ -38,7 +38,7 @@ public class LoginUI{
             }
         }while(password.length() < 6);
         //The account is created and a confirmation message is displayed
-        System.out.println(loginManager.createAccount(userName, email, password));
+        System.out.println(loginManager.createNewAccount(userName, email, password));
     }
 
     //This option is available for when the userName and password are provided in the call.
@@ -67,7 +67,7 @@ public class LoginUI{
                 }
                 else{
                 //The account is created and a confirmation message is displayed
-                System.out.println(loginManager.createAccount(userName, email, password));
+                System.out.println(loginManager.createNewAccount(userName, email, password));
                 }
             }
         }

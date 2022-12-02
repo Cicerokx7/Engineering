@@ -1,18 +1,18 @@
 import java.util.LinkedList;
 
 public class Ticket implements Comparable<Ticket>{
-    String color;
-    String title;
-    String details;
-    LinkedList<CheckListElement> checkLists;
-    int startYear;
-    int startMonth;
-    int startDay;
-    int startTime;
-    int endYear;
-    int endMonth;
-    int endDay;
-    int endTime;
+    private String color;
+    private String title;
+    private String details;
+    private LinkedList<CheckListElement> checkLists;
+    private int startYear;
+    private int startMonth;
+    private int startDay;
+    private int startTime;
+    private int endYear;
+    private int endMonth;
+    private int endDay;
+    private int endTime;
 
     public Ticket(String color, String title, String details, int startYear, int startMonth, int startDay, int startTime, int endYear, int endMonth, int endDay, int endTime){
         this.color = color;

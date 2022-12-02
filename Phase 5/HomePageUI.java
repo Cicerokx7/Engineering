@@ -1,14 +1,13 @@
 import java.util.LinkedList;
-import java.util.concurrent.Flow.Subscriber;
 
 public class HomePageUI {
-    String email;
-    int index;
-    String password;
-    String color;
-    LinkedList<Ticket> tickets;
-    Cloud cloud;
-    ModifyUI modifyUI;
+    private String email;
+    private int index;
+    private String password;
+    private String color;
+    private LinkedList<Ticket> tickets;
+    private Cloud cloud;
+    private ModifyUI modifyUI;
 
     public HomePageUI(ModifyUI modifyUI){
         this.modifyUI = modifyUI;

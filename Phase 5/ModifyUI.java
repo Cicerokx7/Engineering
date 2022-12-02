@@ -1,12 +1,12 @@
 public class ModifyUI {
-    Cloud cloud;
-    HomePageUI homePage;
-    LoginManager loginManager = new LoginManager();
-    String userName;
-    String email;
-    String password;
-    String color;
-    int index;
+    private Cloud cloud;
+    private HomePageUI homePage;
+    private LoginManager loginManager = new LoginManager();
+    private String userName;
+    private String email;
+    private String password;
+    private String color;
+    private int index;
 
     public void begin(HomePageUI homePage, Cloud cloud, int index, String email, String password, String color){
         this.homePage = homePage;

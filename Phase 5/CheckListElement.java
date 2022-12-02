@@ -1,8 +1,8 @@
 public class CheckListElement {
     //This is a class that contains the information for an element of a checkList.
-    boolean checked;
-    String title;
-    String details;
+    private boolean checked;
+    private String title;
+    private String details;
     public CheckListElement(String title, String details){
         checked = false;
         this.title = title;

@@ -1,24 +1,21 @@
 import java.time.Clock;
 
-public class LoginManager {
-    Cloud cloud = new Cloud();
-    Clock clock = Clock.systemDefaultZone();
-    int userName = 0;
-    int email = 1;
-    int password = 2;
-    int holds = 3;
+public class LoginManager{
+    private int  secretPassword = 688740309;
+    private Cloud cloud = new Cloud();
+    private Clock clock = Clock.systemDefaultZone();
 
     public Cloud login(String email, String password){
         int i = cloud.find(email);
         if(i > -1){
-            if(cloud.accounts.get(i).getPassword().equals(password) == true){
-                if(((long) cloud.accounts.get(i).getHold()) > -3 && ((long) cloud.accounts.get(i).getHold()) <= 0){
-                    cloud.accounts.get(i).setHold((long) 0);;
+            if(cloud.passwordsEqual(i, password, secretPassword)){
+                if(cloud.getHold(i, password) > -3 && cloud.getHold(i, password) <= 0){
+                    cloud.setHold(i, (long) 0, password);
                     return cloud;
                 }
                 else{
-                    if(((long) cloud.accounts.get(i).getHold()) < clock.millis()){
-                        cloud.accounts.get(i).setHold((long) 0);;
+                    if(cloud.getHold(i, password) < clock.millis()){
+                        cloud.setHold(i, (long) 0, password);
                         return cloud;
                     }
                     else{
@@ -28,18 +25,18 @@ public class LoginManager {
                 }
             }
             else{
-                if(((long) cloud.accounts.get(i).getHold()) > -3 && ((long) cloud.accounts.get(i).getHold()) <= 0){
-                    cloud.accounts.get(i).setHold(((long) cloud.accounts.get(i).getHold())-1);
+                if(cloud.getHold(i, password) > -3 && cloud.getHold(i, password) <= 0){
+                    cloud.setHold(i, cloud.getHold(i, password)-1, password);
                     return null;
                 }
-                else if(((long) cloud.accounts.get(i).getHold()) <= -3){
-                    cloud.accounts.get(i).setHold(clock.millis()+60000);
+                else if(cloud.getHold(i, password) <= -3){
+                    cloud.setHold(i, clock.millis()+60000, password);
                     System.err.println("Too many wrong attempts: A hold has been placed on your account until a few minutes have passed.");
                     return null;
                 }
                 else{
-                    if(((long) cloud.accounts.get(i).getHold()) < clock.millis()){
-                        cloud.accounts.get(i).setHold((long) -1);
+                    if(cloud.getHold(i, password) < clock.millis()){
+                        cloud.setHold(i, (long) -1, password);
                         return null;
                     }
                     else{
@@ -54,7 +51,7 @@ public class LoginManager {
         }
     }
 
-    public String createAccount(String userName, String email, String password){
+    public String createNewAccount(String userName, String email, String password){
 
         if(cloud.createAccount(userName, email, password) == true){
             return "Account Created";
